@@ -82,7 +82,7 @@ jobs:
           node cypress/scripts/json-to-excel.js
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: excel-report
           path: |

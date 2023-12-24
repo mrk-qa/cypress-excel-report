@@ -15,7 +15,7 @@ jobs:
         continue-on-error: true
 
       - name: Save Cypress reports
-        run: echo "::set-output name=cypress-reports::$(pwd)/cypress/reports"
+        run: echo "cypress-reports-1=$(pwd)/cypress/reports" >> $GITHUB_ENV
 
   cypress-run-2:
     runs-on: ubuntu-22.04
@@ -30,7 +30,7 @@ jobs:
         continue-on-error: true
 
       - name: Save Cypress reports
-        run: echo "::set-output name=cypress-reports::$(pwd)/cypress/reports"
+        run: echo "cypress-reports-2=$(pwd)/cypress/reports" >> $GITHUB_ENV
 
   cypress-run-3:
     runs-on: ubuntu-22.04
@@ -45,7 +45,7 @@ jobs:
         continue-on-error: true
 
       - name: Save Cypress reports
-        run: echo "::set-output name=cypress-reports::$(pwd)/cypress/reports"
+        run: echo "cypress-reports-3=$(pwd)/cypress/reports" >> $GITHUB_ENV
 
   cypress-run-4:
     runs-on: ubuntu-22.04
@@ -60,7 +60,7 @@ jobs:
         continue-on-error: true
 
       - name: Save Cypress reports
-        run: echo "::set-output name=cypress-reports::$(pwd)/cypress/reports"
+        run: echo "cypress-reports-4=$(pwd)/cypress/reports" >> $GITHUB_ENV
 
   cypress-run-5:
     runs-on: ubuntu-22.04
@@ -75,7 +75,7 @@ jobs:
         continue-on-error: true
 
       - name: Save Cypress reports
-        run: echo "::set-output name=cypress-reports::$(pwd)/cypress/reports"
+        run: echo "cypress-reports-5=$(pwd)/cypress/reports" >> $GITHUB_ENV
 
   node-script-and-upload:
     needs: [cypress-run-1, cypress-run-2, cypress-run-3, cypress-run-4, cypress-run-5]
@@ -94,11 +94,12 @@ jobs:
 
       - name: Get Cypress results directories
         run: |
-          echo "Cypress results directories are ${{ needs.cypress-run-1.outputs.cypress-reports }}",
-          ${{ needs.cypress-run-2.outputs.cypress-reports }},
-          ${{ needs.cypress-run-3.outputs.cypress-reports }},
-          ${{ needs.cypress-run-4.outputs.cypress-reports }},
-          ${{ needs.cypress-run-5.outputs.cypress-reports }}"
+          echo "Cypress results directories are
+          $cypress-reports-1,
+          $cypress-reports-2,
+          $cypress-reports-3,
+          $cypress-reports-4,
+          $cypress-reports-5"
 
       - name: Run Node.js script
         run: |

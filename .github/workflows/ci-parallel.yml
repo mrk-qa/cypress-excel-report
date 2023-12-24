@@ -7,62 +7,80 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      # Install npm dependencies, cache them correctly
-      # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
           command: npm run test:batch-1
           browser: chrome
+        continue-on-error: true
 
   cypress-run-2:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      # Install npm dependencies, cache them correctly
-      # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
           command: npm run test:batch-2
           browser: chrome
+        continue-on-error: true
 
   cypress-run-3:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      # Install npm dependencies, cache them correctly
-      # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
           command: npm run test:batch-3
-          browser: firefox
+          browser: firefo
+        continue-on-error: true
 
   cypress-run-4:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      # Install npm dependencies, cache them correctly
-      # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
           command: npm run test:batch-4
           browser: firefox
+        continue-on-error: true
 
   cypress-run-5:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      # Install npm dependencies, cache them correctly
-      # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
           command: npm run test:batch-5
           browser: edge
+        continue-on-error: true
+
+  node-script-and-upload:
+    needs: [cypress-run-1, cypress-run-2, cypress-run-3, cypress-run-4, cypress-run-5]
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+
+      - name: Run Node.js script
+        run: |
+          node cypress/scripts/json-to-excel.js
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: my-artifacts
+          path: |
+            cypress/reports

@@ -7,12 +7,19 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm install
+
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
           command: npm run cy:run
           browser: chrome
         continue-on-error: true
+
+      - name: Save Cypress reports
+        run: echo "cypress-reports=$(pwd)/cypress/reports" >> $GITHUB_ENV
 
   node-script-and-upload:
     needs: cypress-run
@@ -29,8 +36,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Get Cypress results directory
-        run: echo "Cypress results directory is ${{ needs.cypress-run.outputs.cypress-reports }}"
+      - name: Get Cypress results directories
+        run: |
+          echo "Cypress results directories are
+          $cypress-reports"
 
       - name: Run Node.js script
         run: |
@@ -42,4 +51,3 @@ jobs:
           name: excel-report
           path: |
             cypress/reports
-            ${{ needs.cypress-run.outputs.cypress-reports }}

@@ -6,7 +6,12 @@
   "scripts": {
     "cy:open": "npx cypress open",
     "cy:run": "npx cypress run",
-    "json-to-excel": "node cypress/scripts/json-to-excel.js"
+    "json-to-excel": "node cypress/scripts/json-to-excel.js",
+    "test:batch-1": "npx cypress run -s 'cypress/e2e/batch-1/*.js'",
+    "test:batch-2": "npx cypress run -s 'cypress/e2e/batch-2/*.js'",
+    "test:batch-3": "npx cypress run -s 'cypress/e2e/batch-3/*.js'",
+    "test:batch-4": "npx cypress run -s 'cypress/e2e/batch-4/*.js'",
+    "test:batch-5": "npx cypress run -s 'cypress/e2e/batch-5/*.js'"
   },
   "keywords": [],
   "author": "",

@@ -23,5 +23,5 @@ Após rodar todos os testes, execute `node cypress/scripts/json-to-excel.js` par
 
 <p align="center">Abaixo um exemplo do resultado no Excel</p>
 
-<div align="center"><img width="600px"  src="https://github.com/mrk-qa/cypress-excel-report/assets/102618854/5e49e4b7-63c2-4421-8565-ae385bbc3eec">
+<div align="center"><img width="600px"  src="https://github.com/mrk-qa/cypress-excel-report/assets/102618854/62e75511-301b-4c66-ae82-cef304beae17">
 </div>

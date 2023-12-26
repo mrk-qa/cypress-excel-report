@@ -15,8 +15,8 @@ jobs:
           browser: chrome
         continue-on-error: true
 
-      - name: Save Cypress reports
-        run: echo "cypress-reports=$(pwd)/cypress/reports" >> $GITHUB_ENV
+      - name: Verify reports
+        run: ls cypress/reports/
 
   node-script-and-upload:
     needs: cypress-run

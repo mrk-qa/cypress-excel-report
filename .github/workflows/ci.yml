@@ -18,33 +18,13 @@ jobs:
       - name: Verify reports
         run: ls cypress/reports/
 
-  node-script-and-upload:
-    needs: cypress-run
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '14'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Get Cypress results directories
-        run: |
-          echo "Cypress results directories are
-          $cypress-reports"
-
-      - name: Run Node.js script
+      - name: Run script convert json to excel
         run: |
           node cypress/scripts/json-to-excel.js
 
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: excel-report
-          path: |
-            cypress/reports
+        - name: Upload artifacts
+          uses: actions/upload-artifact@v4
+          with:
+            name: excel-report
+            path: |
+              cypress/reports

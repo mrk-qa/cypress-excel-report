@@ -23,6 +23,7 @@ jobs:
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
+        id: artifact-upload-step
         with:
           name: excel-report
           path: |

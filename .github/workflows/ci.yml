@@ -28,6 +28,7 @@ jobs:
           name: excel-report
           path: |
             cypress/reports
+          retention-days: 7
 
       - name: Output artifact ID
         run:  echo 'Artifact ID is ${{ steps.artifact-upload-step.outputs.artifact-id }}'
@@ -36,7 +37,7 @@ jobs:
         id: set-artifact-link
         run: |
           ARTIFACT_ID="${{ steps.artifact-upload-step.outputs.artifact-id }}"
-          ARTIFACT_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts/${ARTIFACT_ID}"
+          ARTIFACT_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts/${{ steps.artifact-upload-step.outputs.artifact-id }}"
           echo "ArtifactLink=${ARTIFACT_URL}" >> $GITHUB_ENV
 
   notify:

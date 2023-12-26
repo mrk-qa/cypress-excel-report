@@ -1,60 +1,57 @@
+const ExcelJS = require('exceljs')
 const fs = require('fs')
-const path = require('path')
-const XLSX = require('xlsx')
 const { format } = require('date-fns')
+const path = require('path')
 
-// Caminho para o arquivo JSON
-const jsonFilePath = 'cypress/reports/results_tests.json'
+const jsonData = JSON.parse(fs.readFileSync('cypress/reports/results_tests.json', 'utf8'))
 
-// Verifica se o arquivo JSON existe
-if (!fs.existsSync(jsonFilePath)) {
-  console.error(`O arquivo ${jsonFilePath} não foi encontrado.`)
-  process.exit(1)
-}
+const workbook = new ExcelJS.Workbook()
+const worksheet = workbook.addWorksheet('Cypress Test Results')
 
-// Lê os dados do arquivo JSON
-const jsonData = require(path.resolve(jsonFilePath))
+worksheet.addRow([
+  'Spec',
+  'Title',
+  'Status',
+  'Duration (ms)',
+  'Cypress Version',
+  'Browser',
+])
 
-// Função para organizar os dados em um formato adequado para o xlsx
-function organizeData(jsonData) {
-  const organizedData = []
+jsonData.runs.forEach((run) => {
+  run.tests.forEach((test) => {
+    worksheet.addRow([
+      run.spec.relative,
+      test.title.join(' '),
+      test.state,
+      test.duration,
+      jsonData.cypressVersion,
+      jsonData.browserName,
+    ])
+  })
+})
 
-  // Cabeçalho
-  const header = ['File', 'Scenario', 'Status', 'Duration']
-  organizedData.push(header)
+worksheet.addRow([
+  'Total Passed',
+  'Total Failed',
+  'Total Duration',
+  'Total Tests',
+])
 
-  // Itera sobre os resultados
-  for (const result of jsonData.results) {
-    organizedData.push([result.feature, result.scenario, result.state, result.duration])
-  }
+worksheet.addRow([
+  jsonData.totalPassed,
+  jsonData.totalFailed,
+  jsonData.totalDuration,
+  jsonData.totalTests,
+])
 
-  return organizedData
-}
+const currentDate = format(new Date(), 'dd-MM-yyyy')
 
-// Função para criar um arquivo Excel local
-function createLocalExcelFile(data, outputPath) {
-  // Cria uma nova planilha
-  const ws = XLSX.utils.aoa_to_sheet(data)
+const excelFilePath = path.join('cypress', 'reports', `cypress_results_${currentDate}.xlsx`)
 
-  // Cria um livro de trabalho
-  const wb = XLSX.utils.book_new()
-  XLSX.utils.book_append_sheet(wb, ws, 'Test Results')
-
-  // Gera o nome do arquivo com a data atual
-  const currentDate = format(new Date(), 'dd-MM-yyyy-HH-mm')
-  const excelOutputPath = `${outputPath}/results_output_${currentDate}.xlsx`
-
-  // Salva o arquivo localmente
-  XLSX.writeFile(wb, excelOutputPath)
-
-  console.log(`O arquivo Excel foi criado em: ${excelOutputPath}`)
-}
-
-// Organiza os dados
-const organizedData = organizeData(jsonData)
-
-// Define o caminho de saída para o arquivo Excel local
-const excelOutputPath = 'cypress/reports'
-
-// Cria o arquivo Excel local
-createLocalExcelFile(organizedData, excelOutputPath)
+workbook.xlsx.writeFile(excelFilePath)
+  .then(() => {
+    console.log(`Planilha salva com sucesso: ${excelFilePath}`)
+  })
+  .catch((err) => {
+    console.error('Erro ao salvar a planilha:', err)
+  })

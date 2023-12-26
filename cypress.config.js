@@ -16,13 +16,15 @@ module.exports = defineConfig({
 
       // Registro de tempo de término e escrita do arquivo no final dos testes
       on('after:run', (results) => {
+        const jsonFilePath = path.join(__dirname, caminhoArquivo);
+
         // Convertendo dados para formato JSON
         const dadosJSON = JSON.stringify(results, null, 2)
 
         // Escrevendo dados no arquivo
-        fs.writeFileSync(path.resolve(caminhoArquivo), dadosJSON)
+        fs.writeFileSync(jsonFilePath, dadosJSON)
 
-        console.log(`Dados foram escritos em ${caminhoArquivo}`)
+        console.log(`Dados foram escritos em ${jsonFilePath}`)
       })
 
       return config

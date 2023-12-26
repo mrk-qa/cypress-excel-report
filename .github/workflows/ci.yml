@@ -35,7 +35,8 @@ jobs:
       - name: Set artifact link
         id: set-artifact-link
         run: |
-          ARTIFACT_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          ARTIFACT_ID="${{ steps.artifact-upload-step.outputs.artifact-id }}"
+          ARTIFACT_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts/${ARTIFACT_ID}"
           echo "ArtifactLink=${ARTIFACT_URL}" >> $GITHUB_ENV
 
   notify:

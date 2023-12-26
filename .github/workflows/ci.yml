@@ -27,7 +27,9 @@ jobs:
           name: excel-report
           path: |
             cypress/reports
-            cypress/reports/*.xlsx
+
+      - name: Output artifact ID
+        run:  echo 'Artifact ID is ${{ steps.artifact-upload-step.outputs.artifact-id }}'
       
       - name: Set artifact link
         id: set-artifact-link

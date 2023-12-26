@@ -33,12 +33,6 @@ jobs:
         id: set-artifact-link
         run: echo "ArtifactLink=https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts" >> $GITHUB_ENV
 
-      # - name: 📣 Send teams notification
-      #   uses: simbo/msteams-message-card-action@latest
-      #   with:
-      #     webhook: ${{ secrets.TEAMS_WEBHOOK_URL }}
-      #     message: Test reports are available [here](${{ env.ArtifactLink }}) for details.
-
   notify:
     needs: cypress-run
     runs-on: ubuntu-latest
@@ -46,5 +40,5 @@ jobs:
       - name: 📣 Send teams notification
         uses: simbo/msteams-message-card-action@latest
         with:
-          webhook: https://everisgroup.webhook.office.com/webhookb2/476632b3-9879-4947-b69f-ea3706cf3678@3048dc87-43f0-4100-9acb-ae1971c79395/IncomingWebhook/07e05cbbd3ef49d9932c342ec0733d12/496fb1b4-0539-4c3f-8228-b17ef4e48f79
+          webhook: ${{ secrets.TEAMS_WEBHOOK_URL }}
           message: Hello world!

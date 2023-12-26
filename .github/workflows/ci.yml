@@ -45,5 +45,5 @@ jobs:
       - name: 📣 Send teams notification
         uses: simbo/msteams-message-card-action@latest
         with:
-          webhook: ${{ secrets.TEAMS_WEBHOOK }}
+          webhook: ${{ secrets.TEAMS_WEBHOOK_URL }}
           message: Hello world!

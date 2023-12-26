@@ -33,8 +33,8 @@ jobs:
         id: set-artifact-link
         run: echo "ArtifactLink=https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts" >> $GITHUB_ENV
 
-      - name: Send a Notification
-          uses: thechetantalwar/teams-notify@v2
-          with:
-          teams_webhook_url: ${{ secrets.TEAMS_WEBHOOK_URL }}
-          message: "Github Action Build Number ${{ github.run_number }} Test reports are available [here](${{ env.ArtifactLink }}) for details."
+      - name: 📣 Send teams notification
+        uses: simbo/msteams-message-card-action@latest
+        with:
+          webhook: ${{ secrets.TEAMS_WEBHOOK_URL }}
+          message: Test reports are available [here](${{ env.ArtifactLink }}) for details.

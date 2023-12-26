@@ -38,10 +38,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Imprime a Variável Secreta
-        run: echo "Minha variável secreta é ${{ vars.TEAMS_WEBHOOK_URL }}"
+        run: echo "Minha variável secreta é ${{ secrets.TEAMS_WEBHOOK_URL }}"
 
       - name: 📣 Send teams notification
         uses: simbo/msteams-message-card-action@latest
         with:
-          webhook: ${{ vars.TEAMS_WEBHOOK_URL }}
+          webhook: ${{ secrets.TEAMS_WEBHOOK_URL }}
           message: Hello world!

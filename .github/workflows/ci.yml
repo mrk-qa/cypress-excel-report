@@ -32,19 +32,15 @@ jobs:
       - name: Set artifact link
         id: set-artifact-link
         run: |
-          ARTIFACT_PATH=$(echo "${{ github.event.workflow_run.artifacts_url }}" | sed 's|.*/artifacts/||')
-          ARTIFACT_URL="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts/${ARTIFACT_PATH}"
+          ARTIFACT_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
           echo "ArtifactLink=${ARTIFACT_URL}" >> $GITHUB_ENV
 
   notify:
     needs: cypress-run
     runs-on: ubuntu-latest
     steps:
-      - name: Imprime a Variável Secreta
-        run: echo "Minha variável secreta é ${{ secrets.TEAMS_WEBHOOK_URL }}"
-
       - name: 📣 Send teams notification
         uses: simbo/msteams-message-card-action@latest
         with:
           webhook: ${{ secrets.TEAMS_WEBHOOK_URL }}
-          message: Hello world!
+          message: "Link do Artifact: ${{ env.ArtifactLink }}"

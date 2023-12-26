@@ -19,12 +19,11 @@ jobs:
         run: ls cypress/reports/
 
       - name: Run script convert json to excel
-        run: |
-          node cypress/scripts/json-to-excel.js
+        run: node cypress/scripts/json-to-excel.js
 
-        - name: Upload artifacts
-          uses: actions/upload-artifact@v4
-          with:
-            name: excel-report
-            path: |
-              cypress/reports
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: excel-report
+          path: |
+            cypress/reports

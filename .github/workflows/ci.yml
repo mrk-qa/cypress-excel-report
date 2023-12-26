@@ -43,4 +43,12 @@ jobs:
         uses: simbo/msteams-message-card-action@latest
         with:
           webhook: ${{ secrets.TEAMS_WEBHOOK_URL }}
-          message: "Link do Artifact: ${{ env.ArtifactLink }}"
+          title: Cypress Excel Report
+          color: 6aa84f
+          message: <p>Clique abaixo para obter os artefatos gerados durante a última execução dos testes!</strong></p>
+          buttons: |
+            Click here! ${{ env.ArtifactLink }}
+          sections: |
+            -
+              activityTitle: Marco Antonio
+              activityImage: https://i.ibb.co/3mf34tL/perfil-linkedin.jpg  

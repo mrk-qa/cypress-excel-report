@@ -18,7 +18,6 @@
   "license": "ISC",
   "dependencies": {
     "cypress": "^13.6.1",
-    "cypress-json-results-non-blocking": "^0.4.1",
     "date-fns": "^3.0.6",
     "exceljs": "^4.4.0",
     "xlsx": "^0.18.5"

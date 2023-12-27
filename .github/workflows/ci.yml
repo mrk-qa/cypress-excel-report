@@ -1,4 +1,4 @@
-name: Run tests in parallel
+name: Run tests
 
 on: push
 jobs:
@@ -47,11 +47,9 @@ jobs:
           color: 6aa84f
           message: <p>Clique abaixo para obter os artefatos gerados durante a última execução dos testes!</strong></p>
           buttons: |
-            Click here! ${{ env.ArtifactLink }}
+            Artefatos ${{ env.ArtifactLink }}
           sections: |
             -
               activity:
                 title: Marco Antonio
-                subtitle: $(date +'%d/%m/%Y, %l:%M%P')
                 image: https://i.ibb.co/3mf34tL/perfil-linkedin.jpg
-              text: Uma demonstração de como enviar uma mensagem para o Teams incluindo um link para os artefatos gerados durante a execução dos testes.

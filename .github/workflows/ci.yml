@@ -44,6 +44,7 @@ jobs:
         with:
           webhook: ${{ secrets.TEAMS_WEBHOOK_URL }}
           title: Cypress Excel Report
+          message: <p>Clique abaixo para obter os artefatos gerados durante a última execução dos testes!</strong></p>
           color: 6aa84f
           buttons: |
             Artefatos ${{ env.ArtifactLink }}
@@ -53,4 +54,3 @@ jobs:
                 title: Marco Antonio
                 subtitle: QA Engineer
                 image: https://i.ibb.co/3mf34tL/perfil-linkedin.jpg
-              text: Clique abaixo para obter os artefatos gerados durante a última execução dos testes!

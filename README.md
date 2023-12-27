@@ -1,4 +1,4 @@
-# Cypress gerando dados dos testes em json e armazenando em uma planilha do Excel
+# Cypress gerando dados dos testes em json, armazenando em uma planilha do Excel e enviando os artefatos via Microsoft Teams
 
 ## 🔖 Requisitos
 
@@ -6,7 +6,6 @@
 - [Visual Studio Code] - versão 1.60+
 - [Git] - 2.35+
 - [Cypress] - versão 13.6.1
-- [Library - cypress-json-results-non-blocking] - versão 0.4.1
 - [Library - date-fns] - versão 3.0.6
 - [Library - exceljs] - versão 4.4.0
 - [Library - xlsx] - versão 0.18.5
@@ -21,7 +20,12 @@ Após rodar todos os testes, execute `node cypress/scripts/json-to-excel.js` par
 
 ## ✅  Resultado
 
-<p align="center">Abaixo um exemplo do resultado no Excel</p>
+<p align="center">Um exemplo do resultado no Excel</p>
 
 <div align="center"><img width="600px"  src="https://github.com/mrk-qa/cypress-excel-report/assets/102618854/62e75511-301b-4c66-ae82-cef304beae17">
+</div>
+
+<p align="center">Um exemplo do resultado no Teams</p>
+
+<div align="center"><img width="600px"  src="https://github.com/mrk-qa/cypress-excel-report/assets/102618854/d7209865-5b6c-4d5e-b133-e31be2dd5401">
 </div>

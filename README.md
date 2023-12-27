@@ -1,5 +1,13 @@
 # Cypress gerando dados dos testes em json, armazenando em uma planilha do Excel e enviando os artefatos via Microsoft Teams
 
+#### Resumo do funcionamento:
+
+> Os testes são executados pelo Cypress que gera os dados dos testes em um arquivo .json
+> É executado um script node.js que lê os dados .json e armazena em uma planilha do Excel
+> Após a geração da planilha, roda o step de uma actions para armazenar os artefatos de cada execução na pipeline
+> Em seguida, roda o step de uma actions que integra com o Microsoft Teams e anexa o link que da acesso aos artefatos da pipeline e envia uma notificação
+> Esse processo da pipeline roda semanalmente através de um cron
+
 ## 🔖 Requisitos
 
 - [Node.js] - versão 16+

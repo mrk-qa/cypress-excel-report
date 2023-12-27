@@ -1,6 +1,11 @@
 name: Run tests
 
-on: push
+on:
+  push:
+  # Adicionando agendamento semanal (aqui, todo sábado às 23:00pm horário de brasília UTC + 3)
+  schedule:
+    - cron: '0 20 * * 6'
+
 jobs:
   cypress-run:
     runs-on: ubuntu-latest

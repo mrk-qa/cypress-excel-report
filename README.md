@@ -24,8 +24,8 @@ Após rodar todos os testes, execute `node cypress/scripts/json-to-excel.js` par
 
 <div align="center"><img width="600px"  src="https://github.com/mrk-qa/cypress-excel-report/assets/102618854/62e75511-301b-4c66-ae82-cef304beae17">
 </div>
-
+    
 <p align="center">Um exemplo do resultado no Teams</p>
 
-<div align="center"><img width="600px"  src="https://github.com/mrk-qa/cypress-excel-report/assets/102618854/d7209865-5b6c-4d5e-b133-e31be2dd5401">
+<div align="center"><img width="600px"  src="https://github.com/mrk-qa/cypress-excel-report/assets/102618854/cf232fd9-102c-4bef-950b-00599b3ffd45">
 </div>

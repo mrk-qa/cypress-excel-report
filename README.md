@@ -30,10 +30,10 @@ Após rodar todos os testes, execute `node cypress/scripts/json-to-excel.js` par
 
 <p align="center">Um exemplo do resultado no Excel</p>
 
-<div align="center"><img width="600px"  src="https://github.com/mrk-qa/cypress-excel-report/assets/102618854/62e75511-301b-4c66-ae82-cef304beae17">
+<div align="center"><img width="800px"  src="https://github.com/mrk-qa/cypress-excel-report/assets/102618854/62e75511-301b-4c66-ae82-cef304beae17">
 </div>
     
 <p align="center">Um exemplo do resultado no Teams</p>
 
-<div align="center"><img width="600px"  src="https://github.com/mrk-qa/cypress-excel-report/assets/102618854/cf232fd9-102c-4bef-950b-00599b3ffd45">
+<div align="center"><img width="800px"  src="https://github.com/mrk-qa/cypress-excel-report/assets/102618854/cf232fd9-102c-4bef-950b-00599b3ffd45">
 </div>

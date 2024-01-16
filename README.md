@@ -30,10 +30,18 @@ Após rodar todos os testes, execute `node cypress/scripts/json-to-excel.js` par
 
 <p align="center">Um exemplo do resultado no Excel</p>
 
-<div align="center"><img width="800px"  src="https://github.com/mrk-qa/cypress-excel-report/assets/102618854/62e75511-301b-4c66-ae82-cef304beae17">
-</div>
-    
+<div align="center"><img width="800px"  src="https://github.com/mrk-qa/cypress-excel-report-with-teams/blob/53cd08f09b503581bb9e6061bf8a896b56dc4116/assets/report-excel.png">
+</div></br>
+
 <p align="center">Um exemplo do resultado no Teams</p>
 
-<div align="center"><img width="800px"  src="https://github.com/mrk-qa/cypress-excel-report/assets/102618854/cf232fd9-102c-4bef-950b-00599b3ffd45">
+<div align="center"><img width="800px"  src="https://github.com/mrk-qa/cypress-excel-report-with-teams/blob/53cd08f09b503581bb9e6061bf8a896b56dc4116/assets/report-teams.png">
 </div>
+
+## 🔮 Apoie este projeto  
+
+Se você deseja apoiar este projeto, deixe um ⭐.  
+
+---  
+
+Feito com 💙 &nbsp;por Marco Antonio 👋 &nbsp; [Meu LinkedIn](https://www.linkedin.com/in/mrk-silva/)  
